@@ -40,11 +40,6 @@ void main() async {
       )
     ],
   );
-
-
-  // Then call Firebase notification service setup
-  //await FirebaseNotificationService().init(BuildContext as BuildContext );
-
   runApp(MyApp());
 }
 class MyApp extends StatelessWidget {

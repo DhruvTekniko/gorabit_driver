@@ -16,6 +16,8 @@ import 'package:gorabbit_driver/screens/orderHistory/ui/orderHistory_screen.dart
 import 'package:gorabbit_driver/screens/profile/ui/profile.dart';
 import 'package:provider/provider.dart';
 
+import '../../../Utils/HelperFuctions/helper_functions.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -30,6 +32,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
+//updater
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      HelperFunctions.checkForUpdate(context);
+    });
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _notificationService.init(context);
     });

@@ -60,16 +60,6 @@ class _SplashScreenState extends State<SplashScreen> {
           ),
           shape: RoundedRectangleBorder(),
         ),
-        // child: const Center(
-        //   child: Text(
-        //     "Go Rabit Driver",
-        //     style: TextStyle(
-        //       color: ColorResource.whiteColor,
-        //       fontSize: 26,
-        //       fontWeight: FontWeight.bold,
-        //     ),
-        //   ),
-        // ),
         child: const Center(
           child: Text(
             "GoRabit Delivery Partner",

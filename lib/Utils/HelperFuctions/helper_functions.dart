@@ -9,6 +9,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:in_app_update/in_app_update.dart';
 
 class HelperFunctions {
   static final ImagePicker _picker = ImagePicker();
@@ -138,6 +139,20 @@ print(phoneNumber);
     }
   }
 
-
-
+  static Future<void> checkForUpdate(BuildContext context) async {
+    try {
+      final info = await InAppUpdate.checkForUpdate();
+      if (info.updateAvailability == UpdateAvailability.updateAvailable) {
+        if (info.immediateUpdateAllowed) {
+          // Force update
+          await InAppUpdate.performImmediateUpdate();
+        } else if (info.flexibleUpdateAllowed) {
+          // Optional update
+          await InAppUpdate.startFlexibleUpdate();
+        }
+      }
+    } catch (e) {
+      debugPrint("Update check failed: $e");
+    }
+  }
 }
